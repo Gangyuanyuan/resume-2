@@ -209,7 +209,9 @@
       </div>
     </section>
     <script>
-      siteWelcome.classList.remove('active')
+      setTimeout(function(){
+        siteWelcome.classList.remove('active')    // 去除loading动画
+      },1000)     // 延时1秒执行
     </script>
   </body>
 </html>
