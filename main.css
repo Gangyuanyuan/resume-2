@@ -34,19 +34,52 @@ h1,h2,h3,h4,h5,h6{ font-weight: normal; }
 	float: left;
 	margin-left: 17px;
 	margin-right: 17px;
+	position: relative;
 }
 .topNavBar nav > ul > li > a{
-	font-size: 13px;
-	color: inherit;
-	font-weight: bold;
-	border-top: 3px solid transparent;
-	border-bottom: 3px solid transparent;
-	padding-top: 6px;
-	padding-bottom: 6px;
+	font-size: 13px; color: inherit; font-weight: bold;
+	border-top: 3px solid transparent; border-bottom: 3px solid transparent;
+	padding-top: 6px; padding-bottom: 6px;
 	display: block;
+	position: relative;
 }
-.topNavBar nav > ul > li > a:hover{
-	border-bottom: 3px solid #e06567;
+.topNavBar nav > ul > li.active > a::after{
+	content: '';
+	display: block;
+	position: absolute; left: 0; top: 100%;  /* 不要写bottom: 0; 出现位置不同*/
+	width: 100%; height: 3px;
+	background: #E06567;
+	animation: menuSlide 0.5s;
+}
+@keyframes menuSlide{    /* 关键帧 */
+	0%{ width: 0; }
+	100%{ width: 100%; }
+}
+.topNavBar .submenu{
+	display: none;
+	position: absolute;
+	top: 100%;
+	right: 0;
+	background: white;
+	color: #3D4451;
+	box-shadow: 0 0 5px rgba(0,0,0,0.5);
+}
+.topNavBar li.active > .submenu{
+	background-repeat: repeat-x;
+	display: block;
+	animation: submenuSlide 0.3s;
+}
+@keyframes submenuSlide{
+	0%{
+		margin-right: 100%;
+	}
+	100%{
+		margin-right: 0%;
+	}
+}
+.topNavBar .submenu > li{
+	white-space: nowrap;    /* 不换行 */
+	padding: 5px 10px;
 }
 .topNavBar .logo{
 	font-size: 24px;
